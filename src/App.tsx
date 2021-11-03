@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <h1>People invited to my party</h1>
       <List people={people} />
-      <AddPeople />
+      <AddPeople people={people} setPeople={setPeople} />
     </div>
   );
 }

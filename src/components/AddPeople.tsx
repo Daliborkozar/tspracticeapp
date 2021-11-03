@@ -1,7 +1,20 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FC, Dispatch } from "react";
 import Button from "@mui/material/Button";
+import { IState as Props } from "../App";
+import { url } from "inspector";
 
-const AddPeople = () => {
+interface IProps {
+  people: Props["people"];
+  // setPeople: Dispatch<React.SetStateAction<{
+  //     name: string;
+  //     url: string;
+  //     age: number;
+  //     note?: string | undefined;
+  // }[]>>
+  setPeople: Dispatch<React.SetStateAction<Props["people"]>>;
+}
+
+const AddPeople: FC<IProps> = ({ people, setPeople }) => {
   const [input, setInput] = useState({
     name: "",
     age: "",
@@ -19,7 +32,21 @@ const AddPeople = () => {
   };
 
   const handleClick = () => {
-     
+    setPeople([
+      ...people,
+      {
+        name: input.name,
+        age: parseInt(input.age),
+        url: input.url,
+        note: input.note,
+      },
+    ]);
+    setInput({
+      name: "",
+      age: "",
+      note: "",
+      url: "",
+    });
   };
   return (
     <div>
