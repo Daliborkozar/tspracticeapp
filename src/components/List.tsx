@@ -5,10 +5,11 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { IState as IProps } from '../App'
 
-interface IProps {
-  people: { name: string; url: string; age: number; note?: string }[];
-}
+// interface IProps {
+//   people: { name: string; url: string; age: number; note?: string }[];
+// }
 //jedan nacin pisanja
 // const List = ({ people }: IProps) => {
 //   return <div>I am a list</div>;
@@ -32,7 +33,7 @@ const List: FC<IProps> = ({ people }) => {
       </Card>
     ));
   };
-  return <>{renderList()}</>;
+  return <Box sx={{ display: 'flex', justifyContent: 'center'}}>{renderList()}</Box>;
 };
 
 export default List;
